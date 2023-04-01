@@ -4,6 +4,7 @@ PROGRAM = invoker.dge
 #PLATFORM = RFW
 #PLATFORM = OD
 #PLATFORM = NPG
+#PLATFORM = MMIYOO
 PLATFORM = PC
 
 # Compiler
@@ -18,6 +19,8 @@ else ifeq ($(PLATFORM), OD-BETA)
 	CC = /home/bittboy/Downloads/gcw0-toolchain/usr/bin/mipsel-gcw0-linux-uclibc-gcc	
 else ifeq ($(PLATFORM), NPG)
 	CC = /opt/gcw0-toolchain/usr/bin/mipsel-gcw0-linux-uclibc-gcc	
+else ifeq ($(PLATFORM), MMIYOO)
+	CC = $(CROSS_COMPILE)gcc
 else
 	PROGRAM = /home/bittboy/git/simplemenu/simplemenu/output/invoker.dge
 	CC = gcc
@@ -33,6 +36,8 @@ else ifeq ($(PLATFORM), OD)
 else ifeq ($(PLATFORM), OD-BETA)
 	CFLAGS = -O2 -fdata-sections -ffunction-sections -fno-PIC -flto -Wall -Wextra -std=gnu99	
 else ifeq ($(PLATFORM), NPG)
+	CFLAGS = -O2 -fdata-sections -ffunction-sections -fno-PIC -flto -Wall -Wextra -std=gnu99
+else ifeq ($(PLATFORM), MMIYOO)
 	CFLAGS = -O2 -fdata-sections -ffunction-sections -fno-PIC -flto -Wall -Wextra -std=gnu99
 else
 	CFLAGS = -DTARGET_PC -O2 -fdata-sections -ffunction-sections -fno-PIC -flto -Wall -Wextra -no-pie	
